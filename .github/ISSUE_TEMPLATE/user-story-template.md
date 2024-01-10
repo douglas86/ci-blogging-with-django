@@ -8,3 +8,9 @@ assignees: ''
 ---
 
 As a **role** I can **capability** so that **received benefit**
+
+### Acceptable Criteria
+
+- acceptance
+- acceptance
+- acceptance
