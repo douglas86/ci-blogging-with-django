@@ -24,7 +24,18 @@ class Post(models.Model):
         In this case created_on field
         The '-' in front of created on means in reverse direction
         """
-        ordering = ['-created_on']
+        ordering = ['-created_on']  # ordering is used to order the field in question
+
+    def __str__(self):
+        """
+        What is the __str__ method?
+        This method is used to return a description of the class
+        In this situation it will return the title of the class
+        As I have connected it to the admin panel instead of it showing the Object
+        It will show the string
+        :return:
+        """
+        return f"{self.title} | written by {self.author}"
 
 
 class Comment(models.Model):
