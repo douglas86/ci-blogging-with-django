@@ -15,6 +15,17 @@ class Post(models.Model):
     excerpt = models.TextField(blank=True)
     updated_on = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        """
+        What is a Meta Class?
+        Metadata is data about data
+
+        In this situation the ordering means order the data based on a field
+        In this case created_on field
+        The '-' in front of created on means in reverse direction
+        """
+        ordering = ['-created_on']
+
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
