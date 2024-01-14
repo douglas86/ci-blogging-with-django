@@ -1,3 +1,7 @@
 This is for the Users of the site:
 username - password
 ahmed - IAMininGLOrN
+
+When I want the browser to auto refresh on server restart?
+Use the following pip package: django-browser-reload 1.12.1
+Link to package: https://pypi.org/project/django-browser-reload/
