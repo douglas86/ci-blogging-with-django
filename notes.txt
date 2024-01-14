@@ -2,6 +2,15 @@ This is for the Users of the site:
 username - password
 ahmed - IAMininGLOrN
 
+If you are wanting to propulate your db with additional content?
+Create a fixtures directory under blog app,
+This will add data to the blog model under posts
+Create a file under fixtures call posts.json
+Place whatever data you want in the file
+to run the following commands to add the data to the db
+$ python manage.py loaddata posts
+Django knows to look in the blog app to run the posts file
+
 When I want the browser to auto refresh on server restart?
 Use the following pip package: django-browser-reload 1.12.1
 Link to package: https://pypi.org/project/django-browser-reload/
