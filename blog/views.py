@@ -8,6 +8,20 @@ generic views -
     to a webpage. It handles teh most common use cases in web app development.
 generic.ListView - 
     The advantage of using this type of view is that you don't have to add the HTML  template only the model
+    
+Three types of views that Django offers:
+- Generic:
+    - Requires little customisation
+    - Works out of the box
+    - Limited ability to extend
+- Class Based:
+    - Similar syntax to generic views
+    - Views can be reused
+    - Conceptually difficult to grasp
+- Function Based:
+    - Simpler and easier to understand
+    - More explicit
+    - Very flexible
 """
 
 
