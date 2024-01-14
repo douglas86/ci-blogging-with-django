@@ -2,6 +2,21 @@ This is for the Users of the site:
 username - password
 ahmed - IAMininGLOrN
 
+When deploying to Heroku, but you haven't done any css styling yet?
+Add the variable DISABLE_COLLECTSTATIC
+with the value of 1
+this will then allow you to run the project without static files
+
+Once you have static files up and running do the following?
+Install whitenoise: $ pip install whitenoise
+add package to requirements: $ pip freeze --local > requirements.txt
+add package to middleware in settings file under the middleware that says, 'SecurityMiddleware'
+add this to middleware section: 'whitenoise.middleware.WhiteNoiseMiddleware',
+under the STATIC_URL variable add the following variable
+STATIC_ROOT = os.path.join(BASE_URL, 'staticfiles')
+run the collectstatic command to collect all static files: $ python manage.py collectstatic
+which creates a staticfiles directory with all static files in project
+
 If you are wanting to propulate your db with additional content?
 Create a fixtures directory under blog app,
 This will add data to the blog model under posts
