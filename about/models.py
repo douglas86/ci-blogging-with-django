@@ -12,3 +12,6 @@ class About(models.Model):
         Order content based on title in ascending order
         """
         ordering = ('title',)
+
+    def __str__(self):
+        return self.title
