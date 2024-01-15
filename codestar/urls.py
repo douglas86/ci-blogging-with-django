@@ -19,6 +19,7 @@ from django.urls import path, include
 
 urlpatterns = [
     # This will include all url paths contained in urls.py under blog directory
+    path('about/', include('about.urls'), name='about-urls'),
     path('admin/', admin.site.urls),
     path('__reload__/', include('django_browser_reload.urls')),
     path('summernote/', include('django_summernote.urls')),
