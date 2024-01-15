@@ -9,9 +9,9 @@ class About(models.Model):
 
     class Meta:
         """
-        Order content based on title in ascending order
+        Order content based on updated_on field in reverse order
         """
-        ordering = ('title',)
+        ordering = ('-updated_on',)
 
     def __str__(self):
         """

@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_browser_reload',
     'django_summernote',
-    'blog'
+    'blog',
+    'about'
 ]
 
 MIDDLEWARE = [
