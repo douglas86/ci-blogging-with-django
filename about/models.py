@@ -14,4 +14,8 @@ class About(models.Model):
         ordering = ('title',)
 
     def __str__(self):
+        """
+        Display the title of the about models
+        :return:
+        """
         return self.title
