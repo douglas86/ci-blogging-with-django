@@ -62,6 +62,7 @@ MIDDLEWARE = [
 
 # django browser reload only works when DJANGO_DEBUG set to true
 if os.environ.get('DJANGO_DEBUG'):
+    print('server running')
     INSTALLED_APPS.append('django_browser_reload')
     MIDDLEWARE.append('django_browser_reload.middleware.BrowserReloadMiddleware')
 
