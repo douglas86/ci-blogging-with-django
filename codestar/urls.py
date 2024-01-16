@@ -24,8 +24,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
     path('', include('blog.urls'), name='blog-urls'),
+    path('__reload__/', include('django_browser_reload.urls'))
 ]
-
-# django browser path works only on DEBUG = true
-if os.environ.get('DJANGO_DEBUG'):
-    urlpatterns.append(path('__reload__/', include('django_browser_reload.urls')))
