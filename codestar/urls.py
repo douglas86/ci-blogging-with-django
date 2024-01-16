@@ -21,6 +21,7 @@ from django.urls import path, include
 urlpatterns = [
     # This will include all url paths contained in urls.py under blog directory
     path('about/', include('about.urls'), name='about-urls'),
+    path('accounts/', include('allauth.urls'), name='allauth-urls'),
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
     path('', include('blog.urls'), name='blog-urls'),
