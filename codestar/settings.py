@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'django_summernote',
-    'livereload',
     'blog',
     'about'
 ]
@@ -67,9 +66,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'livereload.middleware.LiveReloadScript',
     'allauth.account.middleware.AccountMiddleware',
 ]
+
+# when debug is set to true, use livereload to refresh browser of server restart
+if os.environ.get('DJANGO_DEBUG') == 'True':
+    INSTALLED_APPS.insert(5, 'livereload')
+    MIDDLEWARE.append('livereload.middleware.LiveReloadScript')
 
 ROOT_URLCONF = 'codestar.urls'
 
