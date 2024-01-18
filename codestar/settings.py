@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'livereload',
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'allauth',
@@ -67,12 +66,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'livereload.middleware.LiveReloadScript',
     'allauth.account.middleware.AccountMiddleware',
 ]
 
 if os.environ.get('DJANGO_DEBUG') == 'True':
     print('DEBUG MODE ON')
+    INSTALLED_APPS.insert(5, 'livereload')
+    MIDDLEWARE.append('livereload.middleware.LiveReloadScript')
+    print('INSTALLED APPS', INSTALLED_APPS)
 else:
     print('DEBUG MODE OFF')
 
