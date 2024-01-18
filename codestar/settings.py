@@ -71,6 +71,11 @@ MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware',
 ]
 
+if os.environ.get('DJANGO_DEBUG') == 'True':
+    print('DEBUG MODE ON')
+else:
+    print('DEBUG MODE OFF')
+
 ROOT_URLCONF = 'codestar.urls'
 
 TEMPLATES = [
