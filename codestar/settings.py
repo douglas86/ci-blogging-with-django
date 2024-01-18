@@ -69,13 +69,10 @@ MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware',
 ]
 
+# when debug is set to true, use livereload to refresh browser of server restart
 if os.environ.get('DJANGO_DEBUG') == 'True':
-    print('DEBUG MODE ON')
     INSTALLED_APPS.insert(5, 'livereload')
     MIDDLEWARE.append('livereload.middleware.LiveReloadScript')
-    print('INSTALLED APPS', INSTALLED_APPS)
-else:
-    print('DEBUG MODE OFF')
 
 ROOT_URLCONF = 'codestar.urls'
 
