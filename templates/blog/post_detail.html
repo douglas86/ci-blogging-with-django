@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+
+{% block content %}
     {% load static %}
 
     <div class="masthead">
@@ -78,9 +80,9 @@
                     {% if user.is_authenticated %}
                         <h3>Leave a comment:</h3>
                         <p>Posting as: {{ user.username }}</p>
-                        <form action="" method="post" style="margin-top: 1.3rem" id="commentForm"
+                        <form method="post" style="margin-top: 1.3rem" id="commentForm"
                               class="btn btn-signup btn-lg">
-                            {{ comment_form | crispy }}
+                            {{ comment_form }}
                             {% csrf_token %}
                             <button id="sumbitButton" class="btn btn-signup btn-lg">Submit</button>
                         </form>
