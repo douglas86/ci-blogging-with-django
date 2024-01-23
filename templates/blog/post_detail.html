@@ -84,7 +84,7 @@
                               class="btn btn-signup btn-lg">
                             {{ comment_form }}
                             {% csrf_token %}
-                            <button id="sumbitButton" class="btn btn-signup btn-lg">Submit</button>
+                            <button id="submitButton" class="btn btn-signup btn-lg">Submit</button>
                         </form>
                     {% else %}
                         <p>Log in to leave a comment</p>
@@ -112,8 +112,6 @@
         </div>
     </div>
 
-{% endblock content %}
-
-{% block extras %}
     <script src="{% static 'js/comments.js' %}"></script>
+
 {% endblock %}
