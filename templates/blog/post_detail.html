@@ -50,6 +50,7 @@
             <div class="col-md-8 card mb-4 mt-3">
                 <h3>Comments:</h3>
                 <div class="card-body">
+
                     {#                We want a for loop inside the empty control tags to iterate through each comment in comments#}
                     {% for comment in comments %}
                         <div class="p-2 comments{% if not comment.approved and comment.author == user %} faded{% elif not comment.approved %} d-none{% endif %}">
@@ -59,18 +60,44 @@
                                 {{ comment.created_on }}
                             </span> wrote:
                             </p>
-                            <div id="comment{{ comment.id }}">
+                            <div id="comment{{ c.id }}">
                                 {{ comment.body | linebreaks }}
                             </div>
                             {% if not comment.approved and comment.author == user %}
                                 <p class="approval">This comment is awaiting approval</p>
                             {% endif %}
                             {% if user.is_authenticated and comment.author == user %}
-                                <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
+                                <button type="button" class="btn btn-delete" data-bs-toggle="modal"
+                                        data-bs-target="#delete-{{ comment.id }}">Delete
+                                </button>
                                 <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
                             {% endif %}
                         </div>
-                        {#                        Our for loop ends here#}
+
+                        {#    Delete confirmation modal#}
+                        <div class="modal fade" id="delete-{{ comment.id }}" tabindex="-1"
+                             aria-labelledby="deleteModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteModalLabel">Delete comment?</h5>
+                                        <button class="btn-close" type="button" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure you want to delete your comment? This action cannot be undone.
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                        </button>
+                                        <a href="{% url 'comment_delete' slug=post.slug comment_id=comment.id %}"
+                                           id="deleteConfirm" class="btn btn-danger">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     {% endfor %}
                 </div>
             </div>
@@ -93,24 +120,8 @@
             </div>
         </div>
     </div>
-    {#    Delete confirmation modal#}
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Delete comment?</h5>
-                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to delete your comment? This action cannot be undone.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a href="#" id="deleteConfirm" class="btn btn-danger">Delete</a>
-                </div>
-            </div>
-        </div>
-    </div>
+
+
 
     <script src="{% static 'js/comments.js' %}"></script>
 

@@ -70,7 +70,8 @@ def post_detail(request, slug):
             )
 
     comment_form = CommentForm()
-    context = {'post': post, 'comments': comments, 'comment_count': comments_count, 'comment_form': comment_form}
+    context = {'post': post, 'comments': comments, 'comment_count': comments_count,
+               'comment_form': comment_form}
 
     return render(
         request, "blog/post_detail.html", context
@@ -95,5 +96,26 @@ def comment_edit(request, slug, comment_id):
             messages.add_message(request, messages.SUCCESS, 'Your comment has been updated!')
         else:
             messages.add_message(request, messages.ERROR, 'Error updating commit!')
+
+    return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+
+def comment_delete(request, slug, comment_id):
+    """
+    view to delete a comment
+    :param request:
+    :param slug:
+    :param comment_id:
+    :return:
+    """
+    queryset = Post.objects.filter(status=1)
+    post = get_object_or_404(queryset, slug=slug)
+    comment = get_object_or_404(Comment, pk=comment_id)
+
+    if comment.author == request.user:
+        comment.delete()
+        messages.add_message(request, messages.SUCCESS, 'Your comment has been deleted!')
+    else:
+        messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
 
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
